@@ -1,7 +1,7 @@
 <?php
 	$host	= "localhost";
 	$user	= "root";
-	$pass	= "@73kjpasmaul";
+	$pass	= "";
 	$db		= "insreport";
 
 
