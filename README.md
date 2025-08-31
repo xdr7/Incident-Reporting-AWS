@@ -11,6 +11,7 @@ Aplikasi ini dibuat atas kebutuhan Komite Mutu untuk mengumpulkan data berdasark
 - Input Data insiden
 - Report user pelapor
 - Informasi
+- PHP VERSION 7.3
 
 
 Created By Asmaul Asni Subegi, S.Kom 
