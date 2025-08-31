@@ -12,7 +12,7 @@ Aplikasi ini dibuat atas kebutuhan Komite Mutu untuk mengumpulkan data berdasark
 - Informasi
 
 
-Created By Asmaul Asni Subegi, S.Kom
+Created By Asmaul Asni Subegi, S.Kom 
 Computer Science Alumni,                          
 Mathematic and Science Faculty, Mulawarman University
 Samarinda, East Kalimantan, 
