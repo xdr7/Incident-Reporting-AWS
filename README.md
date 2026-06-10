@@ -1,4 +1,4 @@
-# 📋 I.R.E.N System – Incident REporting System
+# 📋 I.R.E.N System – Incident REportiNg System
 ## RSUD Abdoel Wahab Sjahranie Samarinda
 
 **Current Version:** 4.5 (Production)  
