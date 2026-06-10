@@ -1,47 +1,145 @@
 # 📋 Aplikasi Incident Reporting – RSUD Abdoel Wahab Sjahranie Samarinda
 
-**PHP Version:** 7.3
+**Current Version:** 4.5 (Production)  
+**PHP Version:** 7.3  
+**First Released:** 2022  
+**Status:** ✅ Digunakan aktif oleh Komite Mutu RSUD Abdoel Wahab Sjahranie Samarinda
 
 ---
 
 ## 🧠 Tentang Aplikasi
 
-**Incident Reporting** adalah sistem pelaporan insiden sederhana yang digunakan oleh **Komite Mutu RSUD Abdoel Wahab Sjahranie Samarinda** untuk mendokumentasikan setiap kejadian di lingkungan rumah sakit.
+**Incident Reporting** adalah sistem pelaporan insiden yang **telah digunakan sejak tahun 2022** oleh **Komite Mutu RSUD Abdoel Wahab Sjahranie Samarinda** untuk mendokumentasikan setiap kejadian di lingkungan rumah sakit.
 
-Yang membedakan aplikasi ini dari form pelaporan biasa:  
-✅ Menggunakan **Matriks Grading Risiko** – pendekatan standar untuk menilai tingkat keparahan (*severity*) dan probabilitas (*probability*) insiden, sehingga menghasilkan skor risiko yang terukur.  
-✅ Data yang terkumpul bisa diolah lebih lanjut untuk pengambilan keputusan dan peningkatan mutu layanan.
+**Keunikan aplikasi ini:**
+- ✅ Memisahkan **Laporan Klinis** dan **Laporan Non-Klinis**
+- ✅ Menggunakan **Matriks Grading Risiko (Dampak × Probabilitas)** untuk laporan klinis
+- ✅ Sistem **level hak akses** (Superadmin, Admin Unit, User Klinis, User Non-Klinis)
+- ✅ Dilengkapi **AI Agent Dashboard** dan **Chat Global/Kasus/Personal**
 
-Dibuat atas kebutuhan nyata Komite Mutu:  
-> *"Kami perlu sistem yang ringkas, mudah digunakan, tapi tetap berbasis gradasi risiko – bukan sekadar catatan kejadian."*
+Aplikasi ini merupakan **riset mandiri** yang hingga saat ini (2026) telah mencapai **versi 4.5** dan terus digunakan dalam operasional harian Komite Mutu.
 
----
-
-## ✨ Fitur Utama
-
-| Fitur | Deskripsi |
-|-------|------------|
-| 🔐 **User Login** | Akses aman dengan akun masing-masing pelapor |
-| 📊 **Dashboard User** | Ringkasan aktivitas dan menu navigasi |
-| 📝 **Input Data Insiden** | Form lengkap dengan parameter grading risiko (severity x probability) |
-| 📑 **Report User Pelapor** | Riwayat semua laporan yang pernah dibuat |
-| ℹ️ **Informasi** | Panduan jenis insiden + cara membaca matriks grading risiko |
-| 📈 **Matriks Grading Risiko** | Penilaian otomatis terhadap setiap laporan berdasarkan matriks standar |
+> 📌 **Catatan:** Versi yang ada di repository GitHub ini mungkin masih versi lama. Untuk versi terbaru (v4.5) yang sedang berjalan di production, silakan hubungi penulis.
 
 ---
 
-## 🗺️ Matriks Grading Risiko
+## 👥 Level Hak Akses (User Roles)
 
-Aplikasi ini tidak sekadar mencatat "kejadian biasa", melainkan menilai setiap insiden menggunakan matriks risiko yang lazim digunakan di manajemen mutu rumah sakit.
+| Level | Nama | Hak Akses |
+|-------|------|-----------|
+| 1 | **Superadmin** | Akses penuh: dashboard admin, manajemen user (tambah/edit/hapus), kelola artikel (tambah/edit/hapus/toggle status), lihat semua laporan klinis & non-klinis, hapus laporan, export data, AI Agent dashboard, chat global (kirim & lihat), statistik, sidebar permission, ganti password |
+| 2 | **Admin Unit** | Lihat semua laporan klinis & non-klinis, kelola artikel (tambah/edit, tidak bisa hapus), dashboard admin, AI Agent dashboard, chat global (lihat saja), kelola user unit sendiri (tambah user klinis), profile sendiri, ganti password sendiri |
+| 3 | **User Klinis** | Lapor insiden klinis, lihat laporan unit sendiri, dashboard unit, AI Agent unit, baca artikel, chat personal, chat kasus, profile sendiri, ganti password sendiri |
+| 4 | **User Non-Klinis** (IPSRS/Teknis) | Lapor insiden non-klinis (kebocoran, listrik, kebakaran, dll), lihat & kelola laporan non-klinis, beri feedback/update pengerjaan, dashboard non-klinis, chat personal, chat kasus non-klinis, profile sendiri, ganti password sendiri |
 
-**Komponen penilaian:**
-- **Severity (Keparahan)** – Ringan, Sedang, Berat, Kritis
-- **Probability (Kemungkinan terulang)** – Jarang, Mungkin, Sering, Hampir pasti
+---
 
-**Hasil akhir:**  
-Skor risiko (**Low, Medium, High, Extreme**) yang membantu Komite Mutu memprioritaskan tindak lanjut.
+## 📋 Jenis Laporan
 
-> Dengan matriks ini, data insiden tidak hanya dikumpulkan, tapi juga bisa **dibandingkan secara objektif** dari waktu ke waktu.
+### 1. Laporan Klinis
+
+**Jenis Insiden (Kode):**
+
+| Kode | Keterangan |
+|------|-------------|
+| **KNC** | Kejadian Tidak Diharapkan |
+| **KTD** | Kejadian Tidak Diinginkan |
+| **KTC** | Kejadian Tidak Cedera |
+| **KPC** | Kejadian Potensi Cedera |
+| **SENTINEL** | Sentinel Event (fatal) |
+
+**Grading Risiko Klinis (Hasil Matriks):**
+
+| Grade | Warna | Deskripsi |
+|-------|-------|------------|
+| 1 | 🔵 BIRU | Risiko Rendah |
+| 2 | 🟢 HIJAU | Risiko Sedang |
+| 3 | 🟡 KUNING | Risiko Tinggi |
+| 4 | 🔴 MERAH | Risiko Kritis |
+
+> Grade dihasilkan dari **Matriks Risiko (Dampak × Probabilitas)**. User memilih Dampak & Probabilitas → Sistem hitung otomatis → Grade.
+
+---
+
+### 2. Laporan Non-Klinis
+
+**Jenis Insiden Non-Klinis:**
+
+| Ikon | Jenis Insiden |
+|------|---------------|
+| 💧 | Kebocoran Air / Kran Bocor |
+| 🔥 | Kebakaran |
+| ⚡ | Listrik Padam |
+| 🔧 | Kerusakan Alat Medis |
+| 🏢 | Kerusakan Fasilitas |
+| 👮 | Keamanan / Kriminalitas |
+| 🧹 | Kebersihan |
+| 📝 | Lainnya |
+
+**Grading Non-Klinis:**
+
+| Grade | Warna | Deskripsi |
+|-------|-------|------------|
+| 1 | 🟢 Ringan | Perbaikan biasa, tidak mengganggu operasional |
+| 2 | 🟡 Sedang | Mengganggu sebagian operasional |
+| 3 | 🔴 Berat | Menghentikan operasional, butuh tindakan segera |
+
+> ⚠️ **Catatan:** Non-klinis grading dipilih **manual** oleh user (Ringan/Sedang/Berat), tidak menggunakan matriks otomatis seperti laporan klinis.
+
+---
+
+## 🗺️ Matriks Grading Risiko (Klinis)
+
+Grading risiko klinis dihitung otomatis berdasarkan kombinasi **Dampak (Severity)** dan **Probabilitas (Likelihood)** yang dipilih user.
+
+### Tabel Matriks (Dampak × Probabilitas)
+
+| Dampak \ Probabilitas | 1 - Jarang | 2 - Ringan | 3 - Sedang | 4 - Tinggi | 5 - Sering |
+|-----------------------|------------|------------|------------|------------|------------|
+| **5 - Katastropik** | 5 | 10 | 15 | 20 | 25 |
+| **4 - Sangat Berat** | 4 | 8 | 12 | 16 | 20 |
+| **3 - Berat** | 3 | 6 | 9 | 12 | 15 |
+| **2 - Sedang** | 2 | 4 | 6 | 8 | 10 |
+| **1 - Ringan** | 1 | 2 | 3 | 4 | 5 |
+
+### Keterangan Warna & Grade
+
+| Warna | Skor | Grade | Tingkat Risiko |
+|-------|------|-------|----------------|
+| 🔵 BIRU | 1 - 2 | Grade 1 | Rendah |
+| 🟢 HIJAU | 3 - 6 | Grade 2 | Sedang |
+| 🟡 KUNING | 8 - 12 | Grade 3 | Tinggi |
+| 🔴 MERAH | 15 - 25 | Grade 4 | Kritis |
+
+### Contoh Perhitungan
+
+- **Dampak Ringan (1) × Probabilitas Jarang (1)** = Skor 1 → 🔵 Grade 1 (Rendah)
+- **Dampak Berat (3) × Probabilitas Sedang (3)** = Skor 9 → 🟡 Grade 3 (Tinggi)
+- **Dampak Katastropik (5) × Probabilitas Sering (5)** = Skor 25 → 🔴 Grade 4 (Kritis)
+
+> 📌 **Rumus:** Nilai Risiko = Dampak × Probabilitas
+
+---
+
+## 🧩 Fitur Lengkap v4.5
+
+### Dashboard & Pelaporan
+- Input laporan klinis (KNC, KTD, KTC, KPC, SENTINEL)
+- Input laporan non-klinis (8 kategori)
+- Matriks risiko otomatis untuk laporan klinis
+- Dashboard per unit (klinis & non-klinis terpisah)
+
+### Manajemen
+- Manajemen user dengan 4 level hak akses
+- Kelola artikel (dengan toggle status publikasi)
+- Export data laporan
+- Statistik insiden
+
+### Komunikasi
+- AI Agent Dashboard
+- Chat Global
+- Chat Kasus (per insiden)
+- Chat Personal (antar user)
 
 ---
 
@@ -61,12 +159,28 @@ Skor risiko (**Low, Medium, High, Extreme**) yang membantu Komite Mutu mempriori
 
 ---
 
+## 📜 Riwayat Versi
+
+| Versi | Tahun | Keterangan |
+|-------|-------|-------------|
+| v1.0 | 2022 | Rilis awal untuk Komite Mutu |
+| v2.0 | 2023 | Penambahan fitur report & dashboard |
+| v3.0 | 2024 | Peningkatan matriks grading risiko |
+| v4.0 | 2025 | Pemisahan laporan klinis & non-klinis |
+| v4.5 | 2026 | AI Agent, chat system, 4 level user roles |
+
+> 🔄 **Yang di GitHub:** Masih versi lama (belum di-update ke v4.5)  
+> 📧 **Untuk akses versi terbaru v4.5:** Hubungi penulis
+
+---
+
 ## 👨‍💻 Author
 
 **Asmaul Asni Subegi, S.Kom**  
-Alumni Ilmu Komputer, FMIPA – Universitas Mulawarman, Samarinda, Kalimantan Timur.
+Alumni Ilmu Komputer, FMIPA – Universitas Mulawarman, Samarinda, Kalimantan Timur.  
+📧 **Email:** sabayonx@gmail.com
 
-> *"Membangun sistem yang tidak hanya sekadar aplikasi, tapi benar-benar menjawab kebutuhan tim mutu di rumah sakit."*
+Aplikasi ini merupakan **hasil riset mandiri** yang telah berkembang dari tahun 2022 hingga 2026, dan saat ini digunakan secara aktif dalam operasional harian Komite Mutu RSUD Abdoel Wahab Sjahranie Samarinda.
 
 ---
 
@@ -79,61 +193,37 @@ Alumni Ilmu Komputer, FMIPA – Universitas Mulawarman, Samarinda, Kalimantan Ti
 
 ---
 
-## 🚀 Cara Instalasi Singkat
+## 🚀 Cara Instalasi (Untuk Versi di Repo Ini)
 
 1. Clone repository ke folder web server (misal: `htdocs/` di XAMPP)
 2. Import database dari folder `database/` ke MySQL
 3. Sesuaikan konfigurasi database di file `config.php`
-4. Akses via browser:  
-   `http://localhost/incident-reporting/`
+4. Akses via browser: `http://localhost/incident-reporting/`
 5. Login dengan akun yang telah disediakan admin
+
+> ⚠️ **Catatan:** Versi di repo ini adalah versi lama. Untuk production v4.5, silakan hubungi penulis.
 
 ---
 
 ## 📌 Catatan Penting
 
 - Aplikasi ini didesain khusus untuk **RSUD Abdoel Wahab Sjahranie Samarinda**
-- Penggunaan **Matriks Grading Risiko** adalah fitur inti – jangan dihilangkan jika ingin mempertahankan esensi sistem
-- Untuk adopsi di RS lain, sesuaikan parameter severity & probability dengan standar mutu setempat
+- Memisahkan **laporan klinis** (dengan matriks otomatis) dan **non-klinis** (grading manual)
+- Aplikasi ini **bukan aplikasi resmi rumah sakit**, melainkan riset mandiri yang diadopsi dan digunakan oleh Komite Mutu sejak 2022
+- Versi production saat ini (v4.5) memiliki banyak peningkatan dari versi yang ada di GitHub ini
+
+---
+
+## 📞 Kontak
+
+📧 **Email:** sabayonx@gmail.com
+
+Untuk pertanyaan, kolaborasi, atau akses ke versi terbaru v4.5, silakan hubungi melalui email di atas.
 
 ---
 
 ## 📄 Lisensi
 
-**MIT License** – Hak Cipta © 2026 Asmaul Asni Subegi, S.Kom
+Aplikasi ini dilisensikan di bawah **MIT License** – silakan lihat file [LICENSE](LICENSE) untuk detail lengkap.
 
-Seluruh kode dalam aplikasi ini dilisensikan di bawah **MIT License**, sebuah lisensi open source yang fleksibel, aman, dan diakui secara internasional.
-
-### Ringkasan singkat:
-
-| Anda boleh... | Dengan syarat... |
-|---------------|------------------|
-| ✅ Menggunakan secara gratis | 📄 Sertakan pemberitahuan hak cipta |
-| ✅ Memodifikasi kode | 📄 Sertakan teks lisensi MIT |
-| ✅ Mendistribusikan ulang | ⚠️ Tanpa jaminan dari pencipta |
-| ✅ Menggunakan untuk komersial | 🛡️ Pencipta tidak bertanggung jawab atas kerusakan |
-
-### Teks lisensi lengkap:
-
-```text
-MIT License
-
-Copyright (c) 2026 Asmaul Asni Subegi, S.Kom
-
-Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the "Software"), to deal
-in the Software without restriction, including without limitation the rights
-to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software, and to permit persons to whom the Software is
-furnished to do so, subject to the following conditions:
-
-The above copyright notice and this permission notice shall be included in all
-copies or substantial portions of the Software.
-
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-SOFTWARE.
+Mengenai penggunaan nama dan logo rumah sakit, silakan lihat file [TRADEMARK.md](TRADEMARK.md).
