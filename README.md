@@ -1,4 +1,5 @@
-# 📋 Aplikasi Incident Reporting – RSUD Abdoel Wahab Sjahranie Samarinda
+# 📋 I.R.E.N System – Incident REporting System
+## RSUD Abdoel Wahab Sjahranie Samarinda
 
 **Current Version:** 4.5 (Production)  
 **PHP Version:** 7.3  
@@ -9,7 +10,7 @@
 
 ## 🧠 Tentang Aplikasi
 
-**Incident Reporting** adalah sistem pelaporan insiden yang **telah digunakan sejak tahun 2022** oleh **Komite Mutu RSUD Abdoel Wahab Sjahranie Samarinda** untuk mendokumentasikan setiap kejadian di lingkungan rumah sakit.
+**I.R.E.N System (Incident REporting System)** adalah sistem pelaporan insiden yang **telah digunakan sejak tahun 2022** oleh **Komite Mutu RSUD Abdoel Wahab Sjahranie Samarinda** untuk mendokumentasikan setiap kejadian di lingkungan rumah sakit.
 
 **Keunikan aplikasi ini:**
 - ✅ Memisahkan **Laporan Klinis** dan **Laporan Non-Klinis**
@@ -17,7 +18,9 @@
 - ✅ Sistem **level hak akses** (Superadmin, Admin Unit, User Klinis, User Non-Klinis)
 - ✅ Dilengkapi **AI Agent Dashboard** dan **Chat Global/Kasus/Personal**
 
-Aplikasi ini merupakan **riset mandiri** yang hingga saat ini (2026) telah mencapai **versi 4.5** dan terus digunakan dalam operasional harian Komite Mutu.
+Aplikasi ini merupakan **riset mandiri** oleh penulis yang hingga saat ini (2026) telah mencapai **versi 4.5** dan terus digunakan dalam operasional harian Komite Mutu.
+
+> ⚠️ **Peringatan Merek:** Nama **"I.R.E.N System"** dan **"Incident REporting System"** adalah nama aplikasi milik penulis. Dilarang menggunakan nama yang sama atau mirip tanpa izin tertulis dari penulis. Detail lengkap lihat file [TRADEMARK.md](TRADEMARK.md).
 
 > 📌 **Catatan:** Versi yang ada di repository GitHub ini mungkin masih versi lama. Untuk versi terbaru (v4.5) yang sedang berjalan di production, silakan hubungi penulis.
 
@@ -180,7 +183,7 @@ Grading risiko klinis dihitung otomatis berdasarkan kombinasi **Dampak (Severity
 Alumni Ilmu Komputer, FMIPA – Universitas Mulawarman, Samarinda, Kalimantan Timur.  
 📧 **Email:** sabayonx@gmail.com
 
-Aplikasi ini merupakan **hasil riset mandiri** yang telah berkembang dari tahun 2022 hingga 2026, dan saat ini digunakan secara aktif dalam operasional harian Komite Mutu RSUD Abdoel Wahab Sjahranie Samarinda.
+Aplikasi **I.R.E.N System** merupakan **hasil riset mandiri** yang telah berkembang dari tahun 2022 hingga 2026, dan saat ini digunakan secara aktif dalam operasional harian Komite Mutu RSUD Abdoel Wahab Sjahranie Samarinda.
 
 ---
 
@@ -226,4 +229,4 @@ Untuk pertanyaan, kolaborasi, atau akses ke versi terbaru v4.5, silakan hubungi 
 
 Aplikasi ini dilisensikan di bawah **MIT License** – silakan lihat file [LICENSE](LICENSE) untuk detail lengkap.
 
-Mengenai penggunaan nama dan logo rumah sakit, silakan lihat file [TRADEMARK.md](TRADEMARK.md).
+Mengenai penggunaan nama aplikasi **I.R.E.N System** dan nama rumah sakit, silakan lihat file [TRADEMARK.md](TRADEMARK.md).
